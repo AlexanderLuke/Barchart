@@ -27,8 +27,10 @@ net_profit = 0
 buy_threshold = 55
 
 for stock in name_list:
-    open_price = float(Share(stock).get_open())
-    current_price = float(Share(stock).get_price())
+    if Share(stock).get_open() is not None:
+	print Share(stock).get_open()
+        open_price = float(Share(stock).get_open())
+        current_price = float(Share(stock).get_price())
     if open_price < buy_threshold:
         investment = float("{0:.2f}".format(investment + open_price))
         difference = float("{0:.2f}".format(current_price - open_price))
